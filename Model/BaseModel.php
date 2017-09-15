@@ -1,9 +1,4 @@
 <?php  
-
-
-/**
-* 
-*/
 class BaseModel
 {
 	// Thực hiện thêm mới/cập nhật thông tin của đối tượng

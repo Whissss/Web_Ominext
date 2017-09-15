@@ -1,7 +1,3 @@
-<?php
-ob_start();
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -11,20 +7,26 @@ session_start();
 		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
-		<link rel="stylesheet" type="text/css" href="Bootstrap/node_modules/sweetalert/dist/sweetalert.min.js">
+
+
+    	<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 		</script>
+
 		<script
 		  src="https://code.jquery.com/jquery-3.2.1.min.js"
 		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 		  crossorigin="anonymous">
-		 </script>
-			</head>
+		</script>
+    </head>
 <body>
-		<?php
-			include 'View/connect.php';
-		?>
+
+	<?php
+		include 'View/connect.php';
+	?>
+
 	<section class="content">
 		<div class="row header">
 			<!-- Logo -->
@@ -50,6 +52,7 @@ session_start();
 		<nav>
 			<?php include'View/menu.php';?>
 		</nav>
+
 		<!-- Vertical Menu -->
 		<div class="row">
 			<?php include 'View/vertical-menu.php'; ?>
@@ -59,18 +62,17 @@ session_start();
                 <?php 
                 if(isset($_REQUEST['page']))
                 {
-                    $page=$_REQUEST['page'];
-
+                	$page = $_REQUEST['page'];
                     switch ($page)
-                        {
+                    {
                         case '/' :
-                        	include 'index.php' ;
+                        	include 'index.php';
                         		break;
                         case 'dien_dan' :
-                       		include '' ;
+                       		include 'index.php' ;
                        			break ;
                        	case 'tin_tuc' :
-                       		include '' ;
+                       		include 'View/register.php' ;
                        			break ;
                        	case 'hoi_dap' :
                        		include 'View/answer.php' ;
@@ -88,25 +90,28 @@ session_start();
                         	include 'View/success.php';
                         		break;
                        	default :
-                       		echo "string";
+                       		include 'View/404.php';
                        		break ;
 
                     }
                 
-                } else {
+                } 
+                else 
+                {
                     include 'View/product.php';
                 }
-              ?>  
+                ?>
             </section>
 		</div>
-		
+
 		<div class="clear"></div>
 
 		<?php include 'View/footer.php' ?>
 
     </section>
 
-    <script type="text/javascript" src="Bootstrap/css/Script.js"></script>
+<script type="text/javascript" src="Bootstrap/css/Script.js">
+</script>
 
 </body>
 </html>
