@@ -194,16 +194,12 @@ span.input-group-addon i {
 
 /* Menu dọc */
 .vertical-menu {
-    float:left;
     margin-top: -5px;
-    width: 15%;
 }
 
 .so
 {
     margin-top: -10px;
-    float: right;
-    width: 85%;
 }
 /* Menu dọc */
 
@@ -255,10 +251,14 @@ span.input-group-addon i {
 }
 /* // 404 page*/
 
-.help_blocl
+/* information */
+.info_icon
 {
-    display: block;
-    margin-top:10px;
-    width: 30px;
-    color: red;
+    margin: 10px;
+    float: left;""
+    background-image:../images/info_icon.png;
+    height: 32px;
+    width: 32px;
 }
+
+/* //information */

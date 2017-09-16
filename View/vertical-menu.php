@@ -1,4 +1,4 @@
-<aside class="vertical-menu  col-md-4 col-sm-4">
+<aside class="vertical-menu  col-md-2 col-sm-12">
 	<ul class="nav nav-pills nav-stacked">
 	    <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span>&thinsp;Home</a></li>
 	    <li><a href="#"><span class="glyphicon glyphicon-book"></span>&thinsp;Đọc Sách</a></li>

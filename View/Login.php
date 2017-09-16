@@ -19,16 +19,26 @@
         $r   = $row->fetch();
         if($r[0]==1)
         {
+            if($ghinho==true)
+            {
+                 setcookie('login_admin', 'ok', time()+86400);
+                 ?>
+                     <script>
+                         alert("đã lưu cookie");
+                     </script>
+                 <?php
+            }
             $_SESSION['user'] = $admin;
-            setcookie('login_admin', 'ok', time()+86400);
+            $nguoi_dung == true;
             header("location:index.php");
+
         }
         else
         {
             ?>
             <script>
                    alert("Nhập sai tài khoản hoặc mật khẩu");
-                    </script>
+            </script>
             <?php
         }
     }
@@ -42,8 +52,18 @@
         name="pass" id="login_password" class="form-control" type="password" placeholder="Mật Khẩu" required>
             <div class="checkbox">
                     <label>
-                        <input type="checkbox"> Ghi Nhớ
+                        <input type="checkbox" value="ghinho" id="ghinho"> Ghi Nhớ
                     </label>
+                    <script>
+            document.getElementById('ghinho').onclick = function(e){
+                if (this.checked){
+                    <?php $ghinho== true ?>
+                }
+                else{
+                    <?php $ghinho== false ?>
+                }
+            };
+        </script>
             </div>
     </div>
             <div class="modal-footer">

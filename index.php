@@ -8,9 +8,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
 
-
-    	<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
-
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 		</script>
@@ -25,6 +22,8 @@
 
 	<?php
 		include 'View/connect.php';
+		$nguoi_dung = false;
+		$ghinho     = false;
 	?>
 
 	<section class="content">
@@ -32,7 +31,7 @@
 			<!-- Logo -->
 			
 			<!-- Image Logo -->
-			<header class="content_header col-md-10">
+			<header class="content_header col-md-10 col-sm-12">
 				<div class="content_img">
 				<img src="Bootstrap/images/header/logo_bk.png" alt="Logo_bk" id="logo_header">
 				</div>
@@ -58,7 +57,7 @@
 			<?php include 'View/vertical-menu.php'; ?>
 		
 			<!-- // Vertical Menu -->
-			<section class="so col-md-8">        
+			<section class="so col-md-10">        
                 <?php 
                 if(isset($_REQUEST['page']))
                 {
@@ -88,6 +87,9 @@
                             	break;
                         case 'thanh_cong':
                         	include 'View/success.php';
+                        		break;
+                        case 'dang_xuat':
+                        	include 'View/logout.php';
                         		break;
                        	default :
                        		include 'View/404.php';
