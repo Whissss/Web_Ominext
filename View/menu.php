@@ -15,8 +15,7 @@
 		    else
 		    {
 		    	?>
-		    	<li><a href="?page=dang_nhap">tên</a></li>
-		    	<li><a href="?page=dang_xuat">thoát</a></li>
+		    	<li><a href="?page=dang_xuat">đăng xuất</a></li>
 		    <?php
 			}
 		?>

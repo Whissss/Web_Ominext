@@ -1,9 +1,6 @@
 <?php 
     ob_start();
-    session_start();
     include 'View/connect.php';
-?>
-<?php
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
         $admin = $_POST['admin'] ;
@@ -13,25 +10,21 @@
         $admin = addslashes($admin);
         $pass  = strip_tags($pass);
         $pass  = addslashes($pass);
-        $sql2  = 
-"SELECT count(*) FROM user WHERE name = '$admin' and pass ='$pass'";
+        $sql2  = "SELECT count(*) FROM user WHERE name = '$admin' and pass ='$pass'";
         $row = $conn->query($sql2);
         $r   = $row->fetch();
         if($r[0]==1)
         {
-            if($ghinho==true)
+            if(isset($_POST['ghinho']) && $_POST['ghinho']=="ghinho")
             {
-                 setcookie('login_admin', 'ok', time()+86400);
-                 ?>
-                     <script>
-                         alert("đã lưu cookie");
-                     </script>
-                 <?php
-            }
-            $_SESSION['user'] = $admin;
-            $nguoi_dung == true;
-            header("location:index.php");
-
+                setcookie('login_admin', 'ok', time()+60*60*24);
+				header("location:index.php");
+            }else if(!isset($_POST['ghinho'])){
+				session_start();
+				$_SESSION['login_admin']='ok';
+				header("location:index.php");
+			}
+            echo "lỗi";
         }
         else
         {
@@ -52,18 +45,8 @@
         name="pass" id="login_password" class="form-control" type="password" placeholder="Mật Khẩu" required>
             <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="ghinho" id="ghinho"> Ghi Nhớ
+                        <input type="checkbox" value="ghinho" name="ghinho"> Ghi Nhớ
                     </label>
-                    <script>
-            document.getElementById('ghinho').onclick = function(e){
-                if (this.checked){
-                    <?php $ghinho== true ?>
-                }
-                else{
-                    <?php $ghinho== false ?>
-                }
-            };
-        </script>
             </div>
     </div>
             <div class="modal-footer">

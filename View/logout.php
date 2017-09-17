@@ -1,11 +1,8 @@
 <?php
     if(isset($_COOKIE['login_admin']))
-    {
-    	session_start();
-        setcookie('login_admin', '', time());
-        if(session_destroy()) // Destroying All Sessions
-            {
-                header("Location: index.php"); // Redirecting To Home Page
-            }
-    }
+		setcookie ('login_admin','',time());
+	session_start();
+	if(isset($_SESSION['login_admin']))
+		unset($_SESSION['login_admin']);
+	header('location:index.php');
 ?>
