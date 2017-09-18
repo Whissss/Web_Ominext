@@ -1,117 +1,4 @@
 <?php ob_start() ?>
-
-<div class="row main">
-    <div class="main-login main-center">
-		<h5>Điền Đầy Đủ Thông Tin Để Đăng Kí</h5>
-			<form class="" method="post" action="#">
-						
-				<div class="form-group">
-					<label for="name" class="cols-sm-2 control-label">Tên Bạn</label>
-						    
-			        <div class="cols-sm-10">
-					    <div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<input type="text" class="form-control" name="name" id="name"  placeholder="Điền Tên Đầy Đủ Của Bạn ..." required value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="password" class="cols-sm-2 control-label">Mật Khẩu</label>
-					
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control" name="password" id="password"  placeholder="Điền Mật Khẩu Của Bạn ..." required/>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Xác Nhận Mật Khẩu Của Bạn</label>
-
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Xác Nhận Lại Mật Khẩu ..." required/>
-						</div>
-							<?php 
-						        if(!empty($loi) && in_array('loi_pass', $loi))
-                                {
-                                     ?>
-                                    	<script>
-                                            alert("Nhập sai mật khẩu");
-                                        </script>
-                                    <?php
-                                }
-							?>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="email" class="cols-sm-2 control-label"> Email</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-								<input type="email" class="form-control" name="email" id="email"  placeholder="Điền Email Của Bạn ..." required value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
-							</div>
-						</div>
-				</div>
-
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Ngày Tháng Năm Sinh</label>
-					<div class="cols-sm-10">
-						<div class="well"> 
-							<div class="form-group">
-								<input type="date" class="form-control" id="exampleInputDOB1" required name="DoB">
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Điện Thoại</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="number" class="form-control" name="phone" id="phone"  placeholder="Nhập Số Điện Thoại ..." required value="<?php if(isset($_POST['phone'])) echo $_POST['phone']; ?>" />
-						</div>
-				    </div>
-				</div>
-
-				<div class="form-group">
-					<label class="cols-sm-2 control-label">Giới Tính</label>
-					<div class="cols-sm-10">
-						<ul class="Gender list-inline">
-							<li>
-								<input type="radio" name="gender" value="Nam">Nam
-							</li>
-							<li>
-								<input type="radio" name="gender" value="Nữ">Nữ
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Địa Chỉ</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="address" id="address"  placeholder="Nhập Địa Chỉ Của Bạn ..." required value="<?php if(isset($_POST['address'])) echo $_POST['address']; ?>" />
-							</div>
-						</div>
-				</div>
-
-				<div class="form-group ">
-					<button class="btn btn-primary btn-lg btn-block login-button">Đăng Ký</button>
-				</div>
-						
-			</form>
-	</div>
-</div>
-
 <?php
 	if($_SERVER['REQUEST_METHOD']=='POST')
         {
@@ -130,7 +17,7 @@
 
 			$pass1 = $_POST['password'];
 			$pass2 = $_POST['confirm'];
-			if($pass2 !== $pass2)
+			if($pass1 !== $pass2)
 			{
 				$loi[] = 'loi_pass';
 			}
@@ -171,8 +58,138 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 				$count = $conn->exec($sql);
 				if($count>0)
 				{
-				    header('location:Login.php');
+				    header('location:?page=dang_nhap');
 				}
 			}
    		}
  ?>
+<div class="row main" ng-app="demoApp">
+    <div class="main-login main-center">
+		<h5>Điền Đầy Đủ Thông Tin Để Đăng Kí</h5>
+			<form class="" method="post" action="#">
+						
+				<div class="form-group">
+					<label for="name" class="cols-sm-2 control-label">Tên Bạn</label>
+						    
+			        <div class="cols-sm-10">
+					    <div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" name="name" id="name"  placeholder="Điền Tên Đầy Đủ Của Bạn ..." required value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Mật Khẩu</label>
+					
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="password" id="password"  placeholder="Điền Mật Khẩu Của Bạn ..." 
+							 required/>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Xác Nhận Mật Khẩu Của Bạn</label>
+
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Xác Nhận Lại Mật Khẩu ..." 
+						     required/>
+						</div>
+
+							<?php 
+						        if(!empty($loi) && in_array('loi_pass', $loi))
+                                {
+                                    echo "<div style='background-color:red; text-align:center;'>2 pass không trùng nhau</div>";
+                                }
+
+							?>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="email" class="cols-sm-2 control-label"> Email</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+								<input type="email" class="form-control" name="email" id="email"  placeholder="Điền Email Của Bạn ..." required value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" />
+							</div>
+							<?php 
+						        if(!empty($loi) && in_array('loi_trung_email', $loi))
+                                {
+                                    echo "<div style='background-color:red; text-align:center;'>Email đã có người sử dụng</div>";
+                                }
+                                if(!empty($loi) && in_array('loi_email', $loi))
+                                {
+                                    echo "<div style='background-color:red; text-align:center;'>Sai định dạng Email</div>";
+                                }
+							?>
+						</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Ngày Tháng Năm Sinh</label>
+					<div class="cols-sm-10">
+						<div class="well"> 
+							<div class="form-group">
+								<input type="date" class="form-control" id="exampleInputDOB1" required name="DoB">
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Điện Thoại</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="number" class="form-control" name="phone" id="phone"  placeholder="Nhập Số Điện Thoại ..." required value="<?php if(isset($_POST['phone'])) echo $_POST['phone']; ?>" />
+						</div>
+						    <?php 
+						        if(!empty($loi) && in_array('loi_sdt', $loi))
+                                {
+                                    echo "<div style='background-color:red; text-align:center;'>Số điện thoại từ 10-13 số</div>";
+                                }
+                            ?>
+				    </div>
+				</div>
+
+				<div class="form-group">
+					<label class="cols-sm-2 control-label">Giới Tính</label>
+					<div class="cols-sm-10">
+						<ul class="Gender list-inline">
+							<li>
+								<input type="radio" name="gender" value="Nam">Nam
+							</li>
+							<li>
+								<input type="radio" name="gender" value="Nữ">Nữ
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Địa Chỉ</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="address" id="address"  placeholder="Nhập Địa Chỉ Của Bạn ..." required value="<?php if(isset($_POST['address'])) echo $_POST['address']; ?>" />
+							</div>
+						</div>
+				</div>
+
+				<div class="form-group ">
+					<button class="btn btn-primary btn-lg btn-block login-button" ng-disabled="!form.$dirty ||
+ (form.$dirty && form.$invalid)">Đăng Ký</button>
+				</div>
+						
+			</form>
+	</div>
+</div>
+
+

@@ -5,7 +5,6 @@
 	    <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span>&thinsp;Lưu Trữ</a></li>
 	    <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&thinsp;Thông Báo</a></li>
 	    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>&thinsp;&thinsp;Up Sách</a></li>
-	    <li><a href="#"><span class="glyphicon glyphicon-wrench"></span>&thinsp;&thinsp;Cài Đặt Tài Khoản</a></li>
     </ul>
   		<hr>
       		

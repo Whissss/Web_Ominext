@@ -40,8 +40,9 @@
 
 <form id="login-form" class="main_login" action="#" method="post">
     <div class="modal-body">
+        Tên Đăng Nhập
         <input name="admin" id="login_username" class="form-control" type="text" placeholder="Nhập Tên Đăng Nhập" required>
-       
+        Mật Khẩu
         <input 
         name="pass" id="login_password" class="form-control" type="password" placeholder="Mật Khẩu" required>
             <div class="checkbox">

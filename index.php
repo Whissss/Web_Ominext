@@ -7,7 +7,7 @@
 		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
-
+		
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 		</script>
@@ -22,6 +22,7 @@
 <?php
 	ob_start();
 	session_start();
+	
 	$nguoi_dung = false;
 	include 'View/connect.php';
 	if(!(isset($_COOKIE['login_admin']) && $_COOKIE['login_admin']=='ok') && !(isset($_SESSION['login_admin']) && $_SESSION['login_admin']=='ok'))
@@ -87,6 +88,9 @@
                        			break ;
                        	case 'lien_he' :
                        		include 'View/contact.php' ;
+                       			break ;
+                       	case 'trang_ca_nhan' :
+                       		include 'View/option_user.php' ;
                        			break ;
                         case 'dang_ki':
                         	include 'View/register.php' ;

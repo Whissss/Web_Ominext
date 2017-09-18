@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <a href="?hanhdong=them">Thêm</a>
-        <table cellpadding="10" style="background: #ccc">
-            <tr><td>Tên sản phẩm</td><td>Mô tả</td><td>Sửa/Xóa</td></tr>
-            <?php foreach($sps as $sp) { ?>
-            <tr><td><?php echo $sp['tensp'] ?>
-            </td><td><?php echo $sp['mota'] ?>
-            </td><td><a href="index.php?hanhdong=sua&id=<?php echo $sp['id'] ?>">Sửa</a>
-            /<a href="index.php?hanhdong=xoa&id=<?php echo $sp['id'] ?>">Xóa</a></td></tr>
-            <?php } ?>    
-        </table>
-    </body>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
+		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div></div>
+	</body>
 </html>
