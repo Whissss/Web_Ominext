@@ -58,12 +58,14 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 				$count = $conn->exec($sql);
 				if($count>0)
 				{
-				    header('location:?page=dang_nhap');
+					session_start();
+				    $_SESSION['login_admin']='ok';
+				    header("location:index.php");
 				}
 			}
    		}
  ?>
-<div class="row main" ng-app="demoApp">
+<div class="row main">
     <div class="main-login main-center">
 		<h5>Điền Đầy Đủ Thông Tin Để Đăng Kí</h5>
 			<form class="" method="post" action="#">

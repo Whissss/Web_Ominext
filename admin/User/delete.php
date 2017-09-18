@@ -10,7 +10,7 @@
         {
             echo "Hello";
             
-            header('location:../index.php');
+            header('location:user.php');
         }
     }
 ?>

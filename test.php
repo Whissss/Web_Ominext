@@ -1,158 +1,120 @@
 <style type="text/css">
-
-/* Profile container */
-.profile {
-  margin: 20px 0;
+	.content
+{
+	margin-top: 60px;
+}
+h2{
+	color:#FB3126;
+}
+tbody tr td{
+	text-align:center;
+}
+thead th{
+	background-color: #FB503B;
+	padding:10px;
+	border-radius:6px;
+	color:#FFF;
+}
+tr:nth-child(even) {
+	background-color:#FEBFBC;
+}
+ul{
+	list-style:none;
+}
+.navigation{
+	margin-top:50px;
+}
+.navigation li.single{
+	background-color:#FB503B;
+	padding: 10px;
+	border-radius: 5px;
+	color:#FFF;
+}
+.navigation li {
+	display: inline-block;
+	padding:10px;
+}
+.navigation li a{
+	color: #FB503B;
+	text-decoration:none;
 }
 
-/* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
+.navigation li a,.navigation li a:hover,.navigation li.active a {
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	border:1px solid #FB503B;
+	cursor: pointer;
+	padding: 10px;
 }
-
-.profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
-}
-
-.profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
-}
-
-.profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
-
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
-.profile-usermenu {
-  margin-top: 30px;
-}
-
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
-}
-
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
-}
-
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
-}
-
-.profile-usermenu ul li.active {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
-}
-
-/* Profile Content */
-.profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
+.navigation li a:hover,.navigation li.active a {
+	background-color: #FB503B;
+	color:#FFFFFF;
 }
 </style>
-<div class="row profile">
-	<div class="col-md-3">
-		<div class="profile-sidebar">
-			<!-- SIDEBAR USERPIC -->
-			<div class="profile-userpic">
-				<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
-			</div>
-			<!-- END SIDEBAR USERPIC -->
-			<!-- SIDEBAR USER TITLE -->
-			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">
-					Marcus Doe
-				</div>
-				<div class="profile-usertitle-job">
-					Developer
-				</div>
-			</div>
-			<!-- END SIDEBAR USER TITLE -->
-			<!-- SIDEBAR BUTTONS -->
-			<div class="profile-userbuttons">
-				<button type="button" class="btn btn-success btn-sm">Follow</button>
-				<button type="button" class="btn btn-danger btn-sm">Message</button>
-			</div>
-			<!-- END SIDEBAR BUTTONS -->
-			<!-- SIDEBAR MENU -->
-			<div class="profile-usermenu">
-				<ul class="nav">
-					<li class="active">
-						<a href="#">
-						<i class="glyphicon glyphicon-home"></i>
-						Overview </a>
-					</li>
-					<li>
-						<a href="#">
-						<i class="glyphicon glyphicon-user"></i>
-						Account Settings </a>
-					</li>
-					<li>
-						<a href="#" target="_blank">
-						<i class="glyphicon glyphicon-ok"></i>
-						Tasks </a>
-					</li>
-					<li>
-						<a href="#">
-						<i class="glyphicon glyphicon-flag"></i>
-						Help </a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
+<div class="content">
+	<?php include 'paga.php' ?>
+    <center><h2>Danh sách món ăn</h2></center>
+        <table width="50%" align="center" cellpadding="5" cellspacing="0">
+              <thead>
+                  <tr>
+                     <th>Mã Món Ăn</th>
+                     <th>Tên Món Ăn</th>
+                     <th>Giá</th>
+                  </tr>
+              </thead>
+              <tbody>
+              <?php
+                  $results = "SELECT * FROM user ORDER BY id ASC LIMIT $position, $display";
+                  foreach($conn->query($results) as $row)
+                  {
+                      echo '<tr>';
+                      echo '<td align="center" align="middle">'.$row['name'].'</td>';
+                      echo '<td align="center" valign="middle">'.$row['age'].'</td>';
+                      echo '<td align="center" valign="middle">'.$row['address'].'</td>';
+                      echo '</tr>';
+                  }
+                  ?>
+              </tbody>
+       </table>
+<div class="navigation" align="center">
+    <ul>
+    <?php
+         if(isset($total_pages))
+         {
+         if($total_pages > 1)
+         {
+          echo "<li class='single'>Page '.$curr_page. ' of '.$total_pages.'</li>";
+               if($curr_page > $num_links)
+               {
+               	echo "<li><a href=''.$page_url.'?page=1'>First</a></li>";
+               }
+               // nếu trang hiện tại > 1
+               if($curr_page > 1)
+               {
+                echo "<li><a href=''.$page_url.'?page='.($curr_page-1).''>Previous</a> </li>";
+               }
+               for($pages = $start ; $pages <= $end ;$pages++)
+              {
+                  if($pages == $curr_page)
+                  {
+                      echo "<li class='active'><a href=''.$page_url.'?page='.$pages.''>'.$pages.'</a></li>";
+                  }
+                  else
+                  {
+                  echo "<li><a href=''.$page_url.'?page='.$pages.''>'.$pages.'</a></li>"; 
+                  }
+              }
+              // nếu trang hiện tại < tổng số trang           
+             if($curr_page < $total_pages )
+             {
+             	echo "<li><a href=''.$page_url.'?page='.($curr_page+1).''>Next</a></li>";
+             }
+             // nếu trang hiện tại + số link muốn hiển thị (ở đây là + với số link bên phải) > tổng số trang
+            if(($curr_page + $num_links) <$total_pages )
+            {
+            	echo "<li><a href=''.$page_url.'?page='.$total_pages.''>Last</a> </li>";
+            }  
+         }
+       }
+   ?>
+   </ul></div></div>
