@@ -1,3 +1,5 @@
+<?php ob_start() ?>
+
 <div class="row main">
     <div class="main-login main-center">
 		<h5>Điền Đầy Đủ Thông Tin Để Đăng Kí</h5>
@@ -36,13 +38,13 @@
 							<?php 
 						        if(!empty($loi) && in_array('loi_pass', $loi))
                                 {
-                                    echo '
-        						<script type="text/javascript">
-           					        alert("hello");
-                                </script>';
+                                     ?>
+                                    	<script>
+                                            alert("Nhập sai mật khẩu");
+                                        </script>
+                                    <?php
                                 }
 							?>
-						</span>
 					</div>
 				</div>
 
@@ -137,9 +139,9 @@
             foreach ($rows1 as $r1)
                 {
                     if($_POST['email']==$r1[0])
-                {
-                    $loi[]='loi_trung_email';
-                }
+                		{
+                            $loi[]='loi_trung_email';
+                        }
 
         		}
 
@@ -149,25 +151,28 @@
 				$pass    = $_POST['password'] ;
 				$email   = $_POST['email'] ;
 				$dob     = $_POST['DoB'] ;
-				$phone   = $_POST['Phone'] ;
+				$phone   = $_POST['phone'] ;
 				$gender  = $_POST['gender'] ;
 				$address = $_POST['address'] ;
 
+				$name    = strip_tags($name);
+                $name    = addslashes($name);
+                $pass    = strip_tags($pass);
+                $pass    = addslashes($pass);
+                $email   = strip_tags($email);
+                $email   = addslashes($email);
+                $address = strip_tags($address);
+                $address = addslashes($address);
+
 				$sql = "
 insert into user(name , pass , age ,  email ,  phone ,  gender , address ) 
-values (:username,:password,:age,:e_mail,:phone,:gender,:address)";
-
-				$sql->execute(array(
-					':username' => $name,
-					':password' => md5($pass),
-					':e_mail'   => $email,
-					':age'      => $dob,
-					':phone'    => $phone,
-					':gender' 	=> $genDer,
-					':address'  => $address
-				));
-
-				header('location:./?page=thanh_cong');
+values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
+				
+				$count = $conn->exec($sql);
+				if($count>0)
+				{
+				    header('location:Login.php');
+				}
 			}
    		}
  ?>

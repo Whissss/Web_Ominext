@@ -15,6 +15,7 @@
 		    else
 		    {
 		    	?>
+		    	<li><div>xin chào <?php echo $_SESSION['user'] ?></div></li>
 		    	<li><a href="?page=dang_xuat">đăng xuất</a></li>
 		    <?php
 			}

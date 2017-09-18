@@ -26,14 +26,12 @@
 	include 'View/connect.php';
 	if(!(isset($_COOKIE['login_admin']) && $_COOKIE['login_admin']=='ok') && !(isset($_SESSION['login_admin']) && $_SESSION['login_admin']=='ok'))
 	{
-		echo "chưa đăng nhập";
 	}else{
-		echo "đã đăng nhập";
 		$nguoi_dung = true;
 		if(isset($_COOKIE['login_admin']))
-			echo "<br/>dùng cookie : ".$_COOKIE['login_admin'];
+		{}
 		if(isset($_SESSION['login_admin']))
-			echo "<br/>dùng session : ".$_SESSION['login_admin'];
+		{}
 	}
 ?>
 
@@ -122,9 +120,3 @@
 		<?php include 'View/footer.php' ?>
 
     </section>
-
-<script type="text/javascript" src="Bootstrap/css/Script.js">
-</script>
-
-</body>
-</html>

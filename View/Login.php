@@ -15,6 +15,7 @@
         $r   = $row->fetch();
         if($r[0]==1)
         {
+            $as = $_POST['admin'];
             if(isset($_POST['ghinho']) && $_POST['ghinho']=="ghinho")
             {
                 setcookie('login_admin', 'ok', time()+60*60*24);
