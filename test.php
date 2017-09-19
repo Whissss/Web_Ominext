@@ -1,5 +1,24 @@
-<style type="text/css">
-	.content
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="Bootstrap/js/bootstrap.min.js">
+        <link rel="stylesheet" type="text/css" href="Bootstrap/js/bootstrap.js">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<style>
+		.content
 {
 	margin-top: 60px;
 }
@@ -50,71 +69,36 @@ ul{
 	background-color: #FB503B;
 	color:#FFFFFF;
 }
-</style>
-<div class="content">
-	<?php include 'paga.php' ?>
-    <center><h2>Danh sách món ăn</h2></center>
-        <table width="50%" align="center" cellpadding="5" cellspacing="0">
-              <thead>
-                  <tr>
-                     <th>Mã Món Ăn</th>
-                     <th>Tên Món Ăn</th>
-                     <th>Giá</th>
-                  </tr>
-              </thead>
-              <tbody>
-              <?php
-                  $results = "SELECT * FROM user ORDER BY id ASC LIMIT $position, $display";
-                  foreach($conn->query($results) as $row)
-                  {
-                      echo '<tr>';
-                      echo '<td align="center" align="middle">'.$row['name'].'</td>';
-                      echo '<td align="center" valign="middle">'.$row['age'].'</td>';
-                      echo '<td align="center" valign="middle">'.$row['address'].'</td>';
-                      echo '</tr>';
-                  }
-                  ?>
-              </tbody>
-       </table>
-<div class="navigation" align="center">
-    <ul>
-    <?php
-         if(isset($total_pages))
-         {
-         if($total_pages > 1)
-         {
-          echo "<li class='single'>Page '.$curr_page. ' of '.$total_pages.'</li>";
-               if($curr_page > $num_links)
-               {
-               	echo "<li><a href=''.$page_url.'?page=1'>First</a></li>";
-               }
-               // nếu trang hiện tại > 1
-               if($curr_page > 1)
-               {
-                echo "<li><a href=''.$page_url.'?page='.($curr_page-1).''>Previous</a> </li>";
-               }
-               for($pages = $start ; $pages <= $end ;$pages++)
-              {
-                  if($pages == $curr_page)
-                  {
-                      echo "<li class='active'><a href=''.$page_url.'?page='.$pages.''>'.$pages.'</a></li>";
-                  }
-                  else
-                  {
-                  echo "<li><a href=''.$page_url.'?page='.$pages.''>'.$pages.'</a></li>"; 
-                  }
-              }
-              // nếu trang hiện tại < tổng số trang           
-             if($curr_page < $total_pages )
-             {
-             	echo "<li><a href=''.$page_url.'?page='.($curr_page+1).''>Next</a></li>";
-             }
-             // nếu trang hiện tại + số link muốn hiển thị (ở đây là + với số link bên phải) > tổng số trang
-            if(($curr_page + $num_links) <$total_pages )
+	</style>
+	<body>
+		<?php
+		include 'View/connect.php';
+		    $sql1="SELECT DISTINCT * FROM user ";     
+            $sql1.=" ORDER BY id DESC ";
+            if(isset($_REQUEST['p']))
             {
-            	echo "<li><a href=''.$page_url.'?page='.$total_pages.''>Last</a> </li>";
-            }  
+                $p=$_REQUEST['p'];
+            } else {
+                $p=1;
+            }
+            $start=($p-1)*5;
+            $sql1.=" limit $start, 5 ";
+            $rows1=$conn->query($sql1); 
+            $r=$rows1->fetch()[0];
+            $sotrang= ceil($r/5);?>
+         <div style="clear: both; float: right; margin-top: 10px">
+   
+            <?php
+            $link="test.php";
+         if($sotrang>1)
+         {
+             for($i=1; $i<=$sotrang; $i++)
+             {
+                 echo "<a href='$link&p=$i'><button class='btn'>$i</button></a>";
+             }
          }
-       }
-   ?>
-   </ul></div></div>
+             ?> 
+            </div>
+
+    </body>
+</html>

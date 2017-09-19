@@ -59,7 +59,9 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 				if($count>0)
 				{
 					session_start();
-				    $_SESSION['login_admin']='ok';
+				    $_SESSION['login_admin'] ='ok';
+				    $_SESSION['username']    = $name;
+				    $_SESSION['email']       = $email;
 				    header("location:index.php");
 				}
 			}

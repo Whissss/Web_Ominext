@@ -22,7 +22,6 @@
 <?php
 	ob_start();
 	session_start();
-	
 	$nguoi_dung = false;
 	include 'View/connect.php';
 	if(!(isset($_COOKIE['login_admin']) && $_COOKIE['login_admin']=='ok') && !(isset($_SESSION['login_admin']) && $_SESSION['login_admin']=='ok'))

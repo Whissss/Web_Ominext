@@ -2,17 +2,23 @@
 	<div class="col-md-12 col-sm-12">
 		<div class="profile-sidebar">
 			<!-- SIDEBAR USERPIC -->
-			<div class="profile-userpic">
-				<img src="#" class="img-responsive" alt="Image_user">
+			<div class="profile-userpic row">
+				<img src="Bootstrap/images/icon_user.png" class="img-responsive" alt="Image_user" style="height: 150px;width: 150px;">
+				<a class="btn btn-default" style="margin-top: -80px;">
+					<em class="glyphicon glyphicon-pencil"></em>        </a>
 			</div>
 			<!-- END SIDEBAR USERPIC -->
 			<!-- SIDEBAR USER TITLE -->
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">
-					Marcus Doe
+					<?php echo $_SESSION['username'] ?>
+				<a class="btn btn-default">
+					<em class=" glyphicon glyphicon-pencil
+ "></em>        </a>
 				</div>
+
 				<div class="profile-usertitle-job">
-					Developer
+					
 				</div>
 			</div>
 			<!-- END SIDEBAR USER TITLE -->
@@ -32,9 +38,9 @@
 						Overview </a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="">
 						<i class="glyphicon glyphicon-user"></i>
-						Account Settings </a>
+						Cài đặt tài khoản </a>
 					</li>
 					<li>
 						<a href="#" target="_blank">

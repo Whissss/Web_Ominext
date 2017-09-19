@@ -6,7 +6,13 @@
                         <div class="form-group">
                             <label for="name">
                                 Tên</label>
-                            <input type="text" class="form-control" id="name" placeholder="Vui Lòng Nhập Tên" required="required" />
+                            <input type="text" class="form-control" id="name" placeholder="Vui Lòng Nhập Tên" required="required" 
+                            value="<?php 
+                                if($nguoi_dung==true){
+                                    echo $_SESSION['username'];
+                                }
+                            ?>" 
+                            />
                         </div>
                         <div class="form-group">
                             <label for="email">
@@ -14,7 +20,12 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Vui Lòng Điền Địa Chỉ Email" required="required" /></div>
+                                <input type="email" class="form-control" id="email" placeholder="Vui Lòng Điền Địa Chỉ Email" required="required" 
+                                value='<?php 
+                                if($nguoi_dung==true){
+                                    echo $_SESSION['email'];
+                                }
+                            ?>' /></div>
                         </div>
                         <div class="form-group">
                             <label for="subject">

@@ -1,10 +1,16 @@
 <?php 
-	include 'View/connect.php';
-	$page_url ="http://localhost/web_sach/test.php";
-	$display = 3;
-    $num_links = 3;
+	  include 'View/connect.php';
+	  $page_url ="http://localhost/web_sach/test.php";
+    $display = 2;
+    $num_links = 2;
+    $sql = "SELECT COUNT(*) FROM user";
     $records = $conn->query("SELECT COUNT(*) FROM user");
-    $total_rows = $records->rowCount(); 
+    $total_rows = $records->rowCount();
+    echo $total_rows;
+    // for($i = 0 ; $i<$total_rows;$i++)
+    // {
+    //   echo $i;
+    // }
     if(isset($_GET['page']) && is_numeric($_GET['page']))
     {
       $curr_page = $_GET['page'];

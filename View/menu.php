@@ -1,4 +1,4 @@
-<div id="menu">
+<div id="menu" class="row" >
 	<ul>
 		<li><a href="index.php">Trang chủ</a></li>
 		<li><a href="?page=dien_dan">Diễn đàn</a></li>
@@ -9,13 +9,16 @@
 		    if($nguoi_dung==false)
 		    {
 		        ?>
-		        <li><a href="?page=dang_nhap">Đăng Nhập</a></li>
-		        <li><a href="?page=dang_ki">Đăng Ký</a></li>
+		            <li><a href="?page=dang_nhap">Đăng Nhập</a></li>
+		            <li><a href="?page=dang_ki">Đăng Ký</a></li>
 		    <?php }		     
 		    else
 		    {
 		    	?>
-		    	<li><a href="?page=trang_ca_nhan">Trang Cá Nhân</a></li>
+		    	<li><a href="?page=trang_ca_nhan"><img src='Bootstrap/images/icon_user.png' style="height: 24px ;width: 24px; border-radius: 50%;">
+		    		<span><?php echo $_SESSION['username'] ; ?></span>
+		    	    </a>
+		    	</li>
 		    	<li><a href="?page=dang_xuat">Đăng Xuất</a></li>
 		    <?php
 			}

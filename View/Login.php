@@ -15,15 +15,21 @@
         $r   = $row->fetch();
         if($r[0]==1)
         {
-            $as = $_POST['admin'];
+        	$user = $admin;
             if(isset($_POST['ghinho']) && $_POST['ghinho']=="ghinho")
             {
                 setcookie('login_admin', 'ok', time()+60*60*24);
 				header("location:index.php");
             }else if(!isset($_POST['ghinho'])){
 				session_start();
-				$_SESSION['login_admin']='ok';
+				$_SESSION['login_admin'] = 'ok';
+				$_SESSION['username']    = $admin;
+				$sql = "SELECT email FROM user  WHERE name = '$admin' and pass = '$pass'";
+	            $count =  $conn->query($sql);
+	            $r=$count->fetch();
+                $_SESSION['email'] = $r[0];
 				header("location:index.php");
+
 			}
             echo "lỗi";
         }
