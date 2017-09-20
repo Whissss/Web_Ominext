@@ -7,6 +7,7 @@
 		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
+		<link rel="stylesheet" type="text/css" href="Bootstrap/js/bootstrap.min.js">
 		
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
@@ -89,6 +90,9 @@
                        		include 'View/contact.php' ;
                        			break ;
                        	case 'trang_ca_nhan' :
+                       		include 'View/user.php' ;
+                       			break ;
+                       	case 'chinh_sua' :
                        		include 'View/option_user.php' ;
                        			break ;
                         case 'dang_ki':

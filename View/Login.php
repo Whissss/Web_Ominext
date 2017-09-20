@@ -31,15 +31,11 @@
 				header("location:index.php");
 
 			}
-            echo "lỗi";
         }
         else
         {
-            ?>
-            <script>
-                   alert("Nhập sai tài khoản hoặc mật khẩu");
-            </script>
-            <?php
+            $loi = array();
+            $loi[] = 'loi_dang_nhap';
         }
     }
     ?>
@@ -51,6 +47,12 @@
         Mật Khẩu
         <input 
         name="pass" id="login_password" class="form-control" type="password" placeholder="Mật Khẩu" required>
+            <span style="color: red;">
+                <?php if(isset($loi)){
+                    echo "Sai Tài Khoản Hoặc Mật Khẩu";
+                }?>
+            </span>
+
             <div class="checkbox">
                     <label>
                         <input type="checkbox" value="ghinho" name="ghinho"> Ghi Nhớ

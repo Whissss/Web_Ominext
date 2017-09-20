@@ -8,7 +8,7 @@
          $count=$conn->exec($sql1);
          if($count>0)
         {            
-            header('location:user.php');
+            header('location:../index.php?page=user');
         }
     }
 ?>

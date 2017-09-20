@@ -3,81 +3,121 @@
     <head>
         <title>Đăng nhập hệ thống</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../css/bootstrap/css/style3.css">
+        <link rel="stylesheet" href="../Bootstrap/css/style3.css">
     </head>
+    <style type="text/css">
+        form {
+  box-sizing: border-box;
+  width: 260px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  border-radius: 3px;
+}
+form h1 {
+  box-sizing: border-box;
+  padding: 20px;
+}
+ 
+input {
+  margin: 20px 25px 0px 25px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1abc9c;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #1abc9c;
+  font-size: 11px;
+  transform: translateY(-20px);
+  visibility: visible !important;
+}
+ 
+button {
+  border: none;
+  background: #1abc9c;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 25px;
+  margin-top: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+span
+{
+    text-align: center;
+    margin-left: 15px;
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+    </style>
     <body>
-        
-<?php
+ <?php       
 ob_start();
-            include '../connect.php';
+    include 'User/connect.php';
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        $admin = $_POST['txtuser'] ;
+        $pass  = $_POST['txtpass'] ;
 
-            if($_SERVER['REQUEST_METHOD']=='POST')
+        $admin = strip_tags($admin);
+        $admin = addslashes($admin);
+        $pass  = strip_tags($pass);
+        $pass  = addslashes($pass);
+        $sql2  = "SELECT count(*) FROM admin WHERE name = '$admin' and pass ='$pass'";
+        $row = $conn->query($sql2);
+        $r   = $row->fetch();
+        if($r[0]==1)
+        {
+            $user = $admin;
+            if(isset($_POST['ghinho']) && $_POST['ghinho']=="ghinho")
             {
-                $user = $_POST['txtUser'];
-                $pass = md5($_POST['txtPass']);
+                setcookie('login_admin', 'ok', time()+60*60*24);
+                header("location:index.php");
+            }else if(!isset($_POST['ghinho'])){
+                session_start();
+                $_SESSION['login_admin'] = 'ok';
                 
-                $query = "select count(*) from admin where name='$user' and pass = '$pass'";
-                
-                $cot = $conn->query($query);
-                
-                $id = $cot->fetch();
-                
-                if($id[0]==1)
-                {
-                    //1. Luu session (phien lam viec)
-                    
-                    /*
-                    session_start(); //Khoi tao session
-                    $_SESSION['login_admin']='ok'; //Luu bien session
-                    */
-                    
-                    
-                    //2. lUU COOKIES: luu ttin o browser
-                    setcookie('login_admin', 'ok', time()+60*60*24);
-                    
-                    header('location:index.php');
-                    
-                    
-                }
-                else
-                {
-                    echo 'Khong ton tai';
-                }
             }
-        ?>
+            header("location:index.php");
+        }
+        else
+        {
+            $loi = array();
+            $loi[] = 'loi_dang_nhap';
+        }
+    }
+    ?>
         
         <!-- -->
-        <div class="container">
-		
-		<div class="login-box">
-			<div class="box-header">
-            	<p/><img src="../image/logo_to.png" style="width:8%;"/>
-				<p/><h1>Log In</h1>
-                
-			</div>
-            <div class="box-header1">
-            <form class="form-4" action="" method="post">
-                <p class="clearfix">
-                    <label for="login">Username</label>
-                    <input type="text" name="txtUser"/>
-                </p>
-                <p class="clearfix">
-                    <label for="password">Password</label>
-                    <input type="password" name="txtPass"/>
-                </p>
-                <p class="clearfix">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
-                </p>
-                <p class="clearfix">
-                    <input type="submit" name="submit" value="Sign in">
-                </p>
-            </form>
-			<a href="#"><p class="small">Forgot your password?</p></a>
-            </div>
-		</div>
-	</div>
-        
-        
-    </body>
+        <form action="" method="POST">
+            <h1>Login</h1>
+                <input placeholder="Tên Đăng Nhập" type="text" required="" name="txtuser">
+                <input placeholder="Mật Khẩu" type="password" required="" name="txtpass">
+                <span style="color: red;">
+                    <?php 
+                        if(isset($loi)){
+                            echo "Sai Tên Đăng Nhập Hoặc Mật Khẩu";
+                        }
+                    ?>
+                </span>
+                <button>Submit</button>
+        </form>
+</body>
 </html>
