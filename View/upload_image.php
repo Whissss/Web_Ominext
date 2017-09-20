@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-        
-    </head>
-
+<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     function  readURL(input,thumbimage) {
-    if  (input.files && input.files[0]) { //Sử dụng  cho Firefox - chrome
+    if  (input.files && input.files[0]) { 
     var  reader = new FileReader();
     reader.onload = function (e) {
     $("#thumbimage").attr('src', e.target.result);
        }
        reader.readAsDataURL(input.files[0]);
        }
-    else  { // Sử dụng cho IE
+    else  { 
       $("#thumbimage").attr('src', input.value);
   
     }
@@ -27,19 +17,19 @@
     $('.Choicefile').css('background', '#C4C4C4');
     $('.Choicefile').css('cursor', 'default');
     $(".removeimg").show();
-    $(".Choicefile").unbind('click'); //Xóa sự kiện  click trên nút .Choicefile
+    $(".Choicefile").unbind('click'); 
           
     }
     $(document).ready(function () {
-    $(".Choicefile").bind('click', function  () { //Chọn file khi .Choicefile Click
+    $(".Choicefile").bind('click', function  () { 
     $("#uploadfile").click();
                
     });
-    $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+    $(".removeimg").click(function () {
     $("#thumbimage").attr('src', '').hide();
-    $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+    $("#myfileupload").html('<input type="file" id="uploadfile" name="ImageUpload"  onchange="readURL(this);" />');
     $(".removeimg").hide();
-    $(".Choicefile").bind('click', function  () {//Tạo lại sự kiện click để chọn file
+    $(".Choicefile").bind('click', function  () {
     $("#uploadfile").click();
     });
     $('.Choicefile').css('background','#0877D8');
@@ -69,14 +59,31 @@
         width: 24px; 
    }
 </style>
-
-    <body>
-        <form action="" method="POST">
-            <div id="myfileupload" style="text-align: center;">
+<?php
+    ob_start();
+    session_start();
+    include 'connect.php';
+    $a = $_SESSION['email'];
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        $ten_anh = $_FILES['ImageUpload']['name'];
+        $sql     = "UPDATE icon_user SET img_name = '$ten_anh' WHERE email = '$a'";
+        $count   = $conn->exec($sql);
+        move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
+        if($count>0)
+                {
+                    
+                }  
+        
+    }
+?>
+    <body style="text-align: center;">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div id="myfileupload">
                 <input type="file" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
             </div>
             <div id="thumbbox">
-                <img height="100" width="100" alt="Thumb image" id="thumbimage" style="display: none" />
+                <img height="100px" width="100px" alt="Thumb image" id="thumbimage" style="display: none" />
                 <a class="removeimg" href="javascript:" ></a></div>
             <div id="boxchoice">
                 <p style="clear:both"></p>

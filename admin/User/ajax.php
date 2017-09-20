@@ -2,7 +2,7 @@
 	include 'connect.php';
 	$a = $_POST['data'];
 	$sql="SELECT id,name,age,email,phone,gender,address FROM user WHERE
-	name LIKE '%$a%' || age LIKE '%$a%' || email LIKE '%$a%' || phone LIKE '%$a%' || gender LIKE '%$a%' || address LIKE '%$a%'";
+	name LIKE '%$a%' || age LIKE '%$a%' || email LIKE '%$a%' || phone LIKE '%$a%' || gender LIKE '%$a%' || address LIKE '%$a%' LIMIT 10";
 	$rows = $conn->query($sql);
 	foreach ($rows as $r)
                     {

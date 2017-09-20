@@ -8,36 +8,89 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 	</head>
+	<script type="text/javascript">
+        function  readURL(input,thumbimage) {
+           if  (input.files && input.files[0]) { 
+           var  reader = new FileReader();
+           reader.onload = function (e) {
+           $("#thumbimage").attr('src', e.target.result);}
+               reader.readAsDataURL(input.files[0]);
+           }
+        else  { 
+           $("#thumbimage").attr('src', input.value);
+        }
+		    $("#thumbimage").show();
+		    $('.filename').text($("#uploadfile").val());
+		    $('.Choicefile').css('background', '#C4C4C4');
+		    $('.Choicefile').css('cursor', 'default');
+		    $(".removeimg").show();
+		    $(".Choicefile").unbind('click'); 
+    }
+		    $(document).ready(function () {
+		    $(".Choicefile").bind('click', function  () {
+		    $("#uploadfile").click();
+               
+   });
+   $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+        $("#thumbimage").attr('src', '').hide();
+        $("#myfileupload").html('<input type="file" id="uploadfile"  onchange="readURL(this);" />');
+        $(".removeimg").hide();
+        $(".Choicefile").bind('click', function  () {//Tạo lại sự kiện click để chọn file
+        $("#uploadfile").click();
+        });
+        $('.Choicefile').css('background','#0877D8');
+        $('.Choicefile').css('cursor', 'pointer');
+        $(".filename").text("");
+    });
+})
+    </script>
+	<style type="text/css">
+        .Choicefile{
+		    display:block;
+		    background:#0877D8;
+		    border:1px solid #fff;
+		    color:#fff;
+		    width:100px;
+		    text-align:center;
+		    text-decoration:none;
+		    cursor:pointer;
+		    padding:5px 0px;
+		    }
+		   #uploadfile,.removeimg
+		   {
+		    display:none;
+		   }
+		   #thumbbox
+		   {
+		    position:relative;
+		    width:100px;
+		   }
+		   .removeimg
+		   {
+		   background:  url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")  repeat scroll 0 0 transparent;
+		   height: 24px;
+		   position: absolute;
+		   right: 5px;
+		   top: 5px;
+		   width: 24px; }
+</style>
 	<body>
-		<?php include 'View/connect.php'; ?>
-	    <?php 
-	        if($_SERVER['REQUEST_METHOD']=='POST')
-	        {
-		        $ten_anh = $_FILES['ten']['name'];        
-		        $sql = "INSERT INTO icon_user(img_name) values('$ten_anh')";
-		        $count = $conn->exec($sql);
-		        echo $count;
-	        if($count>0)
-	        {
-	        	move_uploaded_file($_FILES['ten']['tmp_name'], "../icon_user/$ten_anh");
-	        }
-	    }
-	    ?>
-		<form action="#" method="POST" enctype="multipart/form-data">
-			<legend>Upload Image</legend>
-			<div class="form-group">
-				<label for="">label</label>
-				<input type="file" name="ten">
-			</div>
-			<input type="submit" class="btn btn-primary" value="Gửi">
-		</form>
-		</body>
+	<div>
+<div id="myfileupload">
+    <input type="file" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
+   <!--      Name  mà server request về sẽ là ImageUpload-->
+ 
+</div>
+    <div id="thumbbox">
+        <img height="100" width="100" alt="Thumb image" id="thumbimage" style="display: none" />
+        <a class="removeimg" href="javascript:" ></a></div>
+    <div id="boxchoice">
+        <a href="javascript:" class="Choicefile">Chọn file</a>
+        <p style="clear:both"></p>
+    </div>
+    <label class="filename"></label>
+</div>
+</body>
 </html>

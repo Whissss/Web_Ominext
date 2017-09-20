@@ -15,8 +15,16 @@
 		    else
 		    {
 		    	?>
-		    	<li><a href="?page=trang_ca_nhan"><img src='Bootstrap/images/icon_user.png' style="height: 24px ;width: 24px; border-radius: 50%;">
-		    		<span><?php echo $_SESSION['username'] ; ?></span>
+		    	<li><a href="?page=trang_ca_nhan">
+		    		<?php 
+					$a = $_SESSION['email'];
+				    $sql ="SELECT img_name FROM icon_user WHERE email = '$a'" ;
+				    $row = $conn->query($sql);
+				    foreach ($row as $r1)
+				    {
+				        echo"<img src='icon_user/$r1[0]' style='height: 24px ;width: 24px; border-radius: 50%;'>";
+				    }
+                ?><span><?php echo $_SESSION['username'] ; ?></span>
 		    	    </a>
 		    	</li>
 		    	<li><a href="?page=dang_xuat">Đăng Xuất</a></li>

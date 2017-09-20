@@ -55,7 +55,19 @@
 insert into user(name , pass , age ,  email ,  phone ,  gender , address ) 
 values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 				
-				$count = $conn->exec($sql);
+				if($gender=='Nam')
+				{
+					$sql = "INSERT INTO icon_user(email,img_name) VALUES('$email','male.jpg')";
+					$count1 = $conn->exec($sql1);
+				}
+				if($gender=='Nữ')
+				{
+					$sql2 = "INSERT INTO icon_user(email,img_name) VALUES('$email','female.jpg')";
+					$count2 = $conn->exec($sql2);
+				}
+				$count  = $conn->exec($sql);
+				
+				
 				if($count>0)
 				{
 					session_start();
@@ -195,5 +207,3 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 			</form>
 	</div>
 </div>
-
-

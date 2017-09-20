@@ -8,6 +8,13 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/js/bootstrap.min.js">
+
+		<!-- message -->
+		<link rel="stylesheet" type="text/css" href="js_chat/jScrollPane/jScrollPane.css" />
+        <link rel="stylesheet" type="text/css" href="css_chat/page.css" />
+        <link rel="stylesheet" type="text/css" href="css_chat/chat.css" />
+		<!--// message -->
+		<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 		
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
@@ -35,7 +42,22 @@
 		{}
 	}
 ?>
-
+<script language="javascript">
+         
+        var window_new = null;
+         
+        function openWindow()
+        {
+            window_new = window.open('http://localhost/web_sach/View/upload_image.php', "windowChild", "width=500, height=500" );
+            return false;
+        }
+         
+        function closeWindow()
+        {
+            window_new.close();
+            return false;
+        }
+</script> 
 	<section class="content">
 		<div class="row header">
 			<!-- Logo -->

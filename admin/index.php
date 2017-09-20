@@ -35,7 +35,7 @@
 	<section class="admin_container">
 	<h1><a href="#">Trang Quản Trị Viên</a></h1>
 		<div class="row">
-			<div class="col-md-4 col-sm-12">
+			<div class="col-md-3 col-sm-12">
 			    <div class="sidebar-nav">
 			        <div class="navbar navbar-default" role="navigation">
 			        <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -50,11 +50,14 @@
 			        </div>
 			    </div>
             </div>
-        	<div class="col-md-8">
+        	<div class="col-md-9">
 			    <?php
 			        if(isset($_REQUEST['page'])){
 			        	$page = $_REQUEST['page'];
                         switch ($page) {
+                        	case '' :
+                        		include 'User/user.php';
+                        		break;
                         	case 'user':
                         		include 'User/user.php';    
                         		break;
@@ -66,7 +69,7 @@
                         	    include 'logout.php';
                         	    break;
                         	default:
-                        		# code...
+                        		
                         		break;
                         }
 			        }
