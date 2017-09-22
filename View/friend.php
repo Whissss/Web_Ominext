@@ -1,6 +1,6 @@
 <script type="text/javascript">
         function add(id,mail) {
-                window.location="?page=add&"+id+"&mail="+mail;
+                window.location="?page=add&id="+id;
         }
 </script>
 <script type="text/javascript">
@@ -60,7 +60,7 @@
                                                 else
                                                 {
                                                    ?>                                        
-                                                    <a class='btn btn-success btn-xs' onclick="add('<?php echo $r1[0] ?>','<?php echo $r[1] ?>')">
+                                                <a class='btn btn-success btn-xs' onclick="add('<?php echo $r1[0] ?>')">
                                                     <span class='glyphicon glyphicon-heart'></span> Kết Bạn </a> 
                                                 <?php  }
                                                 ?>

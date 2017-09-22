@@ -56,8 +56,8 @@
                     $p=1;
                 }
                 $start=($p-1)*5;
-                $sql="SELECT id,name,age,email,phone,gender,address FROM user";
-                $sql.=" ORDER BY id DESC ";
+                $sql="SELECT id_user,name,age,email,phone,gender,address FROM user";
+                $sql.=" ORDER BY id_user DESC ";
                 $rows=$conn->query($sql); 
                 $r=$rows->fetch()[0];
                 $sotrang= ceil($r/5);
