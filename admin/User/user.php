@@ -15,12 +15,11 @@
                 window.location="User/delete.php?page=xoa&id="+id;
             }
             }
-        // function message(id)
-        // {
-        //     window.location="message_with_user.php?page=message&id="+id;
-        // }  
+
 </script>        
-        <?php include'connect.php' ?>
+        <?php include'connect.php'
+        	
+        ?>
        
     <div class="row"> 
         <div class="col-md-12"> 
@@ -31,7 +30,7 @@
                         <h3 class="panel-title">Danh sách người dùng</h3> 
                     </div> 
                     <div class="col col-xs-6 text-right">
-                        <input type="text" class="timkiem"> Tìm Kiếm
+                        <input type="text" class="timkiem">
                     </div> 
                 </div> 
             </div> 
@@ -53,15 +52,16 @@
             <?php
                 if(isset($_REQUEST['p'])){
                     $p=$_REQUEST['p'];
-
                 }else{
                     $p=1;
                 }
                 $start=($p-1)*5;
                 $sql="SELECT id,name,age,email,phone,gender,address FROM user";
+                $sql.=" ORDER BY id DESC ";
                 $rows=$conn->query($sql); 
                 $r=$rows->fetch()[0];
                 $sotrang= ceil($r/5);
+                echo $sotrang;
                 $link="user.php";
                 $sql.=" limit $start, 5 ";
                 $rows=$conn->query($sql);

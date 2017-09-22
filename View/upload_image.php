@@ -66,17 +66,25 @@
     $a = $_SESSION['email'];
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
-        $ten_anh = $_FILES['ImageUpload']['name'];
-        $sql     = "UPDATE icon_user SET img_name = '$ten_anh' WHERE email = '$a'";
-        $count   = $conn->exec($sql);
-        move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
-        if($count>0)
-                {
-                    
-                }  
-        
+        $ten_anh  = $_FILES['ImageUpload']['name'];
+        $sql1     = "UPDATE icon_user SET img_name = '$ten_anh' WHERE email = '$a'";
+        $count    = $conn->exec($sql1);
+        if($count>0 ){
+            
+            echo "Thành Công";
+            move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
+        }elseif($count<=0){
+            $sql2   = "INSERT INTO icon_user(email,img_name) VALUES('$a','$ten_anh')";
+            move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
+            $count2 = $conn->exec($sql2);
+            if($count2>0)
+            {
+                echo "<div style='color:red;'>Thêm Thành Công</div>";    
+            }
+        }
     }
 ?>
+    
     <body style="text-align: center;">
         <form action="" method="POST" enctype="multipart/form-data">
             <div id="myfileupload">
@@ -88,7 +96,7 @@
             <div id="boxchoice">
                 <p style="clear:both"></p>
             </div>
-            <input type="submit" value="Chọn">
+            <input type="submit" value="Upload">
         </form>
 </body>
 </html>

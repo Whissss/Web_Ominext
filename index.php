@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="vi">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
-		<link rel="stylesheet" type="text/css" href="Bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" type="text/css" href="Bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
 
-		<!-- message -->
-		<link rel="stylesheet" type="text/css" href="js_chat/jScrollPane/jScrollPane.css" />
-        <link rel="stylesheet" type="text/css" href="css_chat/page.css" />
-        <link rel="stylesheet" type="text/css" href="css_chat/chat.css" />
-		<!--// message -->
 		<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-		
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+
 		<script 
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 		</script>
@@ -36,6 +32,7 @@
 	{
 	}else{
 		$nguoi_dung = true;
+    $thongbao = 0 ;
 		if(isset($_COOKIE['login_admin']))
 		{}
 		if(isset($_SESSION['login_admin']))
@@ -97,41 +94,50 @@
                     switch ($page)
                     {
                         case '/' :
-                        	include 'index.php';
-                        		break;
+                            include 'index.php';
+                        		    break;
                         case 'dien_dan' :
-                       		include 'index.php' ;
-                       			break ;
+                       		  include 'index.php' ;
+                       			    break ;
                        	case 'tin_tuc' :
-                       		include 'View/register.php' ;
-                       			break ;
+                       		  include 'View/register.php' ;
+                       			    break ;
                        	case 'hoi_dap' :
-                       		include 'View/answer.php' ;
-                       			break ;
+                       		  include 'View/answer.php' ;
+                       			    break ;
                        	case 'lien_he' :
-                       		include 'View/contact.php' ;
-                       			break ;
+                       		  include 'View/contact.php' ;
+                       			    break ;
                        	case 'trang_ca_nhan' :
-                       		include 'View/user.php' ;
-                       			break ;
+                       		  include 'View/user.php' ;
+                       			    break ;
                        	case 'chinh_sua' :
-                       		include 'View/option_user.php' ;
-                       			break ;
+                       		  include 'View/option_user.php' ;
+                       			    break ;
+                       	case 'ban_be' :
+                       	    include 'View/friend.php';
+                       	        break ;
+                        case 'add' :
+                            include 'View/friend/add.php';
+                                break ;
+                        case 'huy' :
+                            include 'View/friend/unfriend.php';
+                                break ; 		
                         case 'dang_ki':
-                        	include 'View/register.php' ;
-                            	break;
+                            include 'View/register.php' ;
+                                break;
                         case 'dang_nhap':
-                        	include 'View/Login.php'; 
-                            	break;
+                        	  include 'View/Login.php'; 
+                                break;
                         case 'thanh_cong':
-                        	include 'View/success.php';
-                        		break;
+                        	  include 'View/success.php';
+                        		    break;
                         case 'dang_xuat':
-                        	include 'View/logout.php';
-                        		break;
+                        	  include 'View/logout.php';
+                        		    break;
                        	default :
-                       		include 'View/404.php';
-                       		break ;
+                       		 include 'View/404.php';
+                       		      break ;
 
                     }
                 

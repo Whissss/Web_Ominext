@@ -24,13 +24,18 @@
 			$q="SELECT email FROM user ";
             $rows1=$conn->query($q);
             foreach ($rows1 as $r1)
-                {
+            {
                     if($_POST['email']==$r1[0])
                 		{
                             $loi[]='loi_trung_email';
                         }
 
-        		}
+        	}
+        	$gender = $_POST['gender'];
+        	if(!isset($gender))
+        	{
+        		$loi[] = 'loi_gioi_tinh';
+        	}
 
 			if(empty($loi))
 			{
@@ -57,7 +62,7 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 				
 				if($gender=='Nam')
 				{
-					$sql = "INSERT INTO icon_user(email,img_name) VALUES('$email','male.jpg')";
+					$sql1 = "INSERT INTO icon_user(email,img_name) VALUES('$email','male.jpg')";
 					$count1 = $conn->exec($sql1);
 				}
 				if($gender=='Nữ')
@@ -187,6 +192,14 @@ values ('$name','$pass','$dob', '$email','$phone','$gender','$address')";
 							</li>
 						</ul>
 					</div>
+					<span>
+						<?php 
+							if(!empty($loi) && in_array('loi_gioi_tinh', $loi))
+                                {
+                                    echo "<div style='background-color:red; text-align:center;'>Vui Lòng Chọn Giới Tính</div>";
+                                }
+						?>
+					</span>
 				</div>
 
 				<div class="form-group">

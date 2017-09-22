@@ -10,7 +10,7 @@
         $admin = addslashes($admin);
         $pass  = strip_tags($pass);
         $pass  = addslashes($pass);
-        $sql2  = "SELECT count(*) FROM user WHERE name = '$admin' and pass ='$pass'";
+        $sql2  = "SELECT count(*) FROM user WHERE email = '$admin' and pass ='$pass'";
         $row = $conn->query($sql2);
         $r   = $row->fetch();
         if($r[0]==1)
@@ -23,11 +23,11 @@
             }else if(!isset($_POST['ghinho'])){
 				session_start();
 				$_SESSION['login_admin'] = 'ok';
-				$_SESSION['username']    = $admin;
-				$sql = "SELECT email FROM user  WHERE name = '$admin' and pass = '$pass'";
+				$_SESSION['email']    = $admin;
+				$sql = "SELECT name FROM user  WHERE email = '$admin' and pass = '$pass'";
 	            $count =  $conn->query($sql);
 	            $r=$count->fetch();
-                $_SESSION['email'] = $r[0];
+                $_SESSION['username'] = $r[0];
 				header("location:index.php");
 
 			}
@@ -42,7 +42,7 @@
 
 <form id="login-form" class="main_login" action="#" method="post">
     <div class="modal-body">
-        Tên Đăng Nhập
+        Email
         <input name="admin" id="login_username" class="form-control" type="text" placeholder="Nhập Tên Đăng Nhập" required>
         Mật Khẩu
         <input 
