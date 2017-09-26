@@ -185,7 +185,7 @@ span.input-group-addon i {
 .main_login
 {
     margin: auto;
-    width: 500px;
+    width: 33%;
 }
 
 
@@ -378,45 +378,24 @@ span.input-group-addon i {
   width: 150px;
 }
 /* //Friend */
-/* Nút Liên Kết Footer*/
-.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 20px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius: 50%;
-}
- 
-.fa:hover {
-    opacity: 0.7;
-}
- 
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-}
- 
-.fa-twitter {
-    background: #55ACEE;
-    color: white;
-}
- 
-.fa-google {
-    background: #dd4b39;
-    color: white;
-}
- 
-.fa-youtube {
-    background: #bb0000;
-    color: white;
-}
-/*// Nút Liên Kết*/
-/* information_user */
-.information_user
-{
-  height: 340px;
-  width: 244px;
-}
-/* //information_user */
+/*  Upload_images */
+#uploadfile,.removeimg
+    {
+        display:none;
+    }
+    #thumbbox
+    {
+        position:relative;
+        width:100px;
+    }
+    .removeimg
+    {
+        background:  url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
+        repeat scroll 0 0 transparent;
+        height: 24px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 24px; 
+   }
+/* // Upload_image*/

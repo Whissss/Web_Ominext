@@ -38,27 +38,6 @@
     });
     })
 </script>
-<style type="text/css">
-    #uploadfile,.removeimg
-    {
-        display:none;
-    }
-    #thumbbox
-    {
-        position:relative;
-        width:100px;
-    }
-    .removeimg
-    {
-        background:  url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
-        repeat scroll 0 0 transparent;
-        height: 24px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        width: 24px; 
-   }
-</style>
 <?php
     ob_start();
     session_start();
@@ -66,21 +45,46 @@
     $a = $_SESSION['email'];
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
-        $ten_anh  = $_FILES['ImageUpload']['name'];
-        $sql1     = "UPDATE icon_user SET img_name = '$ten_anh' WHERE email = '$a'";
-        $count    = $conn->exec($sql1);
-        if($count>0 ){
-            
-            echo "Thành Công";
-            move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
-        }elseif($count<=0){
-            $sql2   = "INSERT INTO icon_user(email,img_name) VALUES('$a','$ten_anh')";
-            move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
-            $count2 = $conn->exec($sql2);
-            if($count2>0)
-            {
-                echo "<div style='color:red;'>Thêm Thành Công</div>";    
+        $target_dir = "icon_user/";
+        $target_file = $target_dir . basename($_FILES['ImageUpload']['name']);
+        
+        $typeFile = pathinfo($_FILES['ImageUpload']['name'], PATHINFO_EXTENSION);
+        $typeFileAllow = array('png','jpg','jpeg', 'gif');
+
+        if(!in_array($typeFile, $typeFileAllow)){
+            $error = "File bạn vừa chọn hệ thống không hỗ trợ, bạn vui lòng chọn hình ảnh";
+        }
+        $sizeFile = $_FILES['ImageUpload']['size'];
+        if($sizeFile > 5242880){
+            $error = "File bạn chọn không được quá 5MB";
+        }
+        
+        if(file_exists($target_file)){
+            $error = "File bạn chọn đã tồn tại trên hệ thống";
+        }
+
+        if(empty($error))
+        {
+            $ten_anh  = $_FILES['ImageUpload']['name'];
+            $sql1     = "UPDATE icon_user SET img_name = '$ten_anh' WHERE email = '$a'";
+            $count    = $conn->exec($sql1);
+            if($count>0 ){
+                
+                echo "Thành Công";
+                move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
+            }elseif($count<=0){
+                $sql2   = "INSERT INTO icon_user(email,img_name) VALUES('$a','$ten_anh')";
+                move_uploaded_file($_FILES['ImageUpload']['tmp_name'], "../icon_user/$ten_anh");
+                $count2 = $conn->exec($sql2);
+                if($count2>0)
+                {
+                    echo "<div style='color:red;'>Thêm Thành Công</div>";    
+                }
             }
+        }
+        else
+        {
+            echo $error;
         }
     }
 ?>

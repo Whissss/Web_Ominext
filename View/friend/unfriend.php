@@ -2,12 +2,16 @@
     include 'View/connect.php' ;
 	if(isset($_REQUEST['id']))
     {
-        $ma=$_REQUEST['id'];
-        $sql1="UPDATE friend SET status = '' WHERE id_user = '$ma'";
+        $ma    = $_REQUEST['id'];
+        $sql   = "SELECT email FROM user WHERE id_user = '$ma'";
+        $row   = $conn->query($sql);
+        foreach ($row as $r1)
+        $mail  = $r1[0];
+        $sql1  = "DELETE FROM friend WHERE email_friend = '$mail' OR ";
         $count=$conn->exec($sql1);
          if($count>0)
         {            
-            echo "thành công";
+            echo "hủy thành công";
         }
     }
 ?>

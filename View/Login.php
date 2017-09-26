@@ -24,10 +24,11 @@
 				session_start();
 				$_SESSION['login_admin'] = 'ok';
 				$_SESSION['email']    = $admin;
-				$sql = "SELECT name FROM user  WHERE email = '$admin' and pass = '$pass'";
+				$sql = "SELECT name,email FROM user  WHERE email = '$admin' and pass = '$pass'";
 	            $count =  $conn->query($sql);
 	            $r=$count->fetch();
                 $_SESSION['username'] = $r[0];
+                $_SESSION['email']    = $r[1];
 				header("location:index.php");
 
 			}

@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY ,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `level` int(11) NOT NULL
@@ -43,18 +43,18 @@ INSERT INTO `admin` (`id`, `name`, `pass`, `level`) VALUES
 (1, 'root', '11051996', 1);
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `friend`
 --
-
 CREATE TABLE `friend` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `id_user` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_friend` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  FOREIGN KEY (`email`) REFERENCES `user`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `friend` (
 --
 
 CREATE TABLE `icon_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `img_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -86,8 +86,8 @@ INSERT INTO `icon_user` (`id`, `email`, `img_name`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+CREATE TABLE `user`(
+  `id_user` int(11) NOT NULL PRIMARY KEY,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `age` date NOT NULL,
@@ -170,11 +170,7 @@ ALTER TABLE `user`
 
 --
 -- Constraints for table `friend`
---
-ALTER TABLE `friend`
-  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `quan_he` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

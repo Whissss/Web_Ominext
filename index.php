@@ -6,10 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Chào Mừng Bạn Đến Với Web Trao Đổi Sách Miễn Phí</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
-    <link rel="stylesheet" type="text/css" href="Bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
-
-		<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="Bootstrap/css/Style.css">
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 
 		<script 
@@ -27,12 +28,13 @@
 	ob_start();
 	session_start();
 	$nguoi_dung = false;
+  $thongbao = 0 ;
 	include 'View/connect.php';
 	if(!(isset($_COOKIE['login_admin']) && $_COOKIE['login_admin']=='ok') && !(isset($_SESSION['login_admin']) && $_SESSION['login_admin']=='ok'))
 	{
 	}else{
 		$nguoi_dung = true;
-    $thongbao = 0 ;
+    
 		if(isset($_COOKIE['login_admin']))
 		{}
 		if(isset($_SESSION['login_admin']))
@@ -111,6 +113,9 @@
                        	case 'trang_ca_nhan' :
                        		  include 'View/user.php' ;
                        			    break ;
+                        case 'thong_bao' :
+                            include 'View/notification.php' ;
+                                break ;        
                        	case 'chinh_sua' :
                        		  include 'View/option_user.php' ;
                        			    break ;
@@ -122,6 +127,9 @@
                                 break ;
                         case 'huy' :
                             include 'View/friend/unfriend.php';
+                                break ;
+                        case 'friend' :
+                            include 'View/friend/inform.php';
                                 break ; 		
                         case 'dang_ki':
                             include 'View/register.php' ;

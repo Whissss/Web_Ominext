@@ -15,8 +15,29 @@
 		    else
 		    {
 		    	?>
+		    	<li ><a href="?page=thong_bao">Bạn Bè
+		    		<?php
+		    		echo $thongbao;
+		    			// $b = $_SESSION['email'];
+		    			// $sql = "SELECT status FROM friend WHERE email_friend = '$b' OR email = '$b'";
+		    			// $row   = $conn->query($sql);
+         //                foreach ($row as $r1)
+         //                {
+         //                	$dem = $r1[0];
+
+         //                }var_dump($dem);
+                        // if($dem == 1)
+                        // {
+                        // 	echo '1';
+                        // }
+                        // else{
+                        // 	echo 'không có';
+                        // }
+                        
+		    		?>
+		    	</a></li>
 		    	<li ><a href="?page=trang_ca_nhan">
-		    		<?php 
+		    		<?php
 					$a = $_SESSION['email'];
 				    $sql ="SELECT img_name FROM icon_user WHERE email = '$a'" ;
 				    $row = $conn->query($sql);

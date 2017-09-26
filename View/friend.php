@@ -1,11 +1,16 @@
 <script type="text/javascript">
-        function add(id,mail) {
+        function add(id) {
                 window.location="?page=add&id="+id;
         }
 </script>
 <script type="text/javascript">
         function huy(id) {
                 window.location="?page=huy&id="+id;
+        }
+</script> 
+<script type="text/javascript">
+        function friend(id) {
+                window.location="?page=friend&id="+id;
         }
 </script> 
 
@@ -25,7 +30,6 @@
         $rows=$conn->query($sql); 
         $r=$rows->fetch()[0];
         $sotrang= ceil($r/5);
-        echo $sotrang;
         $sql.=" limit $start, 5 ";
         $rows=$conn->query($sql);
             foreach ($rows as $r){
@@ -40,27 +44,27 @@
                                     <div class="media-body">
                                         <h4 class='media-heading'></h4>
                                             <?php 
-                                                $s     = "SELECT status FROM friend WHERE id_user = '$r[0]'" ;
+                                                $s     = "SELECT status FROM friend WHERE email_friend = '$r[1]' OR email='$r[1]'"  ;
                                                 $count = $conn->query($s);
                                                 $r1     = $count->fetch();
                                                 $id    = $r1[0];
                                                 if($id==1)
                                                 { 
                                                     ?>                                        
-                                                    <a class='btn btn-success btn-xs' onclick='huy(<?php echo $r1[0] ?>)'>
+                                                    <a class='btn btn-success btn-xs' onclick='huy(<?php echo $r[0] ?>)'>
                                                     <span class='glyphicon glyphicon-heart'></span> Đã Gửi Lời Mời Kết Bạn 
                                                     </a>
                                                     
                                             <?php }
                                                 elseif ($id==2) {
                                                      ?>                                        
-                                                    <a class='btn btn-success btn-xs' onclick='friend(<?php echo $r1[0] ?>)'>
+                                                    <a class='btn btn-success btn-xs' onclick='friend(<?php echo $r[0] ?>)'>
                                                     <span class='glyphicon glyphicon-heart'></span> Bạn Bè </a> 
                                                 <?php  }
                                                 else
                                                 {
                                                    ?>                                        
-                                                <a class='btn btn-success btn-xs' onclick="add('<?php echo $r1[0] ?>')">
+                                                <a class='btn btn-success btn-xs' onclick='add(<?php echo $r[0] ?>)'>
                                                     <span class='glyphicon glyphicon-heart'></span> Kết Bạn </a> 
                                                 <?php  }
                                                 ?>
