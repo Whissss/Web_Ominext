@@ -22,19 +22,12 @@
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">
 					<?php echo $_SESSION['username'] ?>
-				
 				</div>
-
+               
 				<div class="profile-usertitle-job">
 					
 				</div>
 			</div>
-                <?php
-                echo"
-				    <div class='profile-userbuttons'>
-				    <button type='button' class='btn btn-success btn-sm'>Kết Bạn</button>
-				    <button type='button' class='btn btn-danger btn-sm'>Gửi Tin Nhắn</button>
-			        </div> "?>
 			<div class="profile-usermenu">
 				<ul class="nav">
 					<li>

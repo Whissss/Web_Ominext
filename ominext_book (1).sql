@@ -51,8 +51,7 @@ CREATE TABLE `friend` (
   `id_user` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_friend` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` int(11) NOT NULL,
-  FOREIGN KEY (`email`) REFERENCES `user`(`email`)
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 

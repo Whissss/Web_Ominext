@@ -28,7 +28,7 @@
 	ob_start();
 	session_start();
 	$nguoi_dung = false;
-  $thongbao = 0 ;
+    $thongbao = 0 ;
 	include 'View/connect.php';
 	if(!(isset($_COOKIE['login_admin']) && $_COOKIE['login_admin']=='ok') && !(isset($_SESSION['login_admin']) && $_SESSION['login_admin']=='ok'))
 	{
@@ -43,19 +43,19 @@
 ?>
 <script language="javascript">
          
-        var window_new = null;
-         
-        function openWindow()
-        {
-            window_new = window.open('http://localhost/web_sach/View/upload_image.php', "windowChild", "width=500, height=500" );
-            return false;
-        }
-         
-        function closeWindow()
-        {
-            window_new.close();
-            return false;
-        }
+	var window_new = null;
+		
+	function openWindow()
+	{
+		window_new = window.open('http://localhost/web_sach/View/upload_image.php', "windowChild", "width=500, height=500" );
+		return false;
+	}
+		
+	function closeWindow()
+	{
+		window_new.close();
+		return false;
+	}
 </script> 
 	<section class="content">
 		<div class="row header">
@@ -97,28 +97,31 @@
                     {
                         case '/' :
                             include 'index.php';
-                        		    break;
+                        		break;
                         case 'dien_dan' :
-                       		  include 'index.php' ;
-                       			    break ;
+                       		include 'index.php' ;
+                       			break ;
                        	case 'tin_tuc' :
                        		  include 'View/register.php' ;
                        			    break ;
                        	case 'hoi_dap' :
-                       		  include 'View/answer.php' ;
-                       			    break ;
+                       		include 'View/answer.php' ;
+                       			break ;
                        	case 'lien_he' :
-                       		  include 'View/contact.php' ;
-                       			    break ;
+                       		include 'View/contact.php' ;
+                       			break ;
                        	case 'trang_ca_nhan' :
-                       		  include 'View/user.php' ;
-                       			    break ;
+                       	    include 'View/user.php' ;
+                       		    break ;
                         case 'thong_bao' :
                             include 'View/notification.php' ;
-                                break ;        
+								break ;
                        	case 'chinh_sua' :
-                       		  include 'View/option_user.php' ;
-                       			    break ;
+                       		include 'View/option_user.php' ;
+								break ;
+						case 'xac_nhan' :
+							include 'View/friend/accept.php' ;
+								break ;
                        	case 'ban_be' :
                        	    include 'View/friend.php';
                        	        break ;
@@ -127,25 +130,22 @@
                                 break ;
                         case 'huy' :
                             include 'View/friend/unfriend.php';
-                                break ;
-                        case 'friend' :
-                            include 'View/friend/inform.php';
                                 break ; 		
                         case 'dang_ki':
                             include 'View/register.php' ;
                                 break;
                         case 'dang_nhap':
-                        	  include 'View/Login.php'; 
+                        	include 'View/Login.php'; 
                                 break;
                         case 'thanh_cong':
-                        	  include 'View/success.php';
-                        		    break;
+                        	include 'View/success.php';
+                        		break;
                         case 'dang_xuat':
-                        	  include 'View/logout.php';
-                        		    break;
+                        	include 'View/logout.php';
+                        		break;
                        	default :
-                       		 include 'View/404.php';
-                       		      break ;
+                       		include 'View/404.php';
+                       		    break ;
 
                     }
                 
