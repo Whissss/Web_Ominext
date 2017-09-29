@@ -2,11 +2,16 @@
 *{
     margin: 0px;
     padding: 0px;
+    -webkit-border-radius: 0px  !important;
+    -moz-border-radius: 0px  !important;
+    border-radius: 0px !important;
 }
 body {
     font-family: sans-serif;
     color: #333;
     background:#dedede url(img/back.png) repeat;
+    padding: 0;
+    margin: 0;
 }
 
 .row
@@ -254,15 +259,12 @@ span.input-group-addon i {
 .info_icon
 {
     margin: 10px;
-    float: left;""
-    background-image:../images/info_icon.png;
+    float: left;
     height: 32px;
     width: 32px;
 }
 
 /* //information */
-
-
 /*======================================================*/
 /* Profile container */
 .profile {
@@ -379,22 +381,22 @@ span.input-group-addon i {
 /* //Friend */
 /*  Upload_images */
 #uploadfile,.removeimg
-    {
-        display:none;
-    }
-    #thumbbox
-    {
-        position:relative;
-        width:100px;
-    }
-    .removeimg
-    {
-        background:  url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
-        repeat scroll 0 0 transparent;
-        height: 24px;
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        width: 24px; 
-   }
+{
+    display:none;
+}
+#thumbbox
+{
+position:relative;
+width:100px;
+}
+.removeimg
+{
+background:  url("http://png-3.findicons.com/files/icons/2181/34al_volume_3_2_se/24/001_05.png")
+repeat scroll 0 0 transparent;
+height: 24px;
+position: absolute;
+right: 5px;
+top: 5px;
+width: 24px;
+}
 /* // Upload_image*/

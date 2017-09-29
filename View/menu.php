@@ -23,7 +23,7 @@
 				    $row = $conn->query($sql);
 				    foreach ($row as $r1)
 				    {
-				        echo"<img src='icon_user/$r1[0]' style='height: 24px ;width: 24px; border-radius: 50%;'>";
+				        echo"<img src='icon_user/$r1[0]' style='height: 24px ;width: 24px;border-radius:60%;'>";
 				    }
                 ?><span> <?php echo $_SESSION['username'] ; ?></span>
 		    	    </a>
